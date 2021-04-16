@@ -4,6 +4,7 @@
 
 html {
   font-family: 'Roboto', open-sans;
+  background-color: rgba(0, 128, 128, 0.75);
 }
 
 body {
@@ -42,8 +43,9 @@ header {
   padding: 0.15rem;
   margin: auto;
   display: block;
-  color: #023d6d;
+  color: white;
   text-align: center;
+  background-color: rgba(0, 128, 128, 0.5);
 }
 
 #calculator input:focus {
