@@ -24,51 +24,36 @@ function writeToLog(
     number: operationNumber,
     newResult: newResult,
   };
+
   logEntries.push(logEntry);
   console.log(logEntries);
 }
 
-function add() {
+function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
+  let mathOperator;
 
-  const calculationDescription = `${initialResult} + ${enteredNumber}`;
-  currentResult += enteredNumber;
+  if (calculationType === 'ADD') {
+    currentResult += enteredNumber;
+    mathOperator = '+';
+  } else if (calculationType === 'SUBTRACT') {
+    currentResult -= enteredNumber;
+    mathOperator = '-';
+  } else if (calculationType === 'MULTIPLY') {
+    currentResult *= enteredNumber;
+    mathOperator = '*';
+  } else if (calculationType === 'DIVIDE') {
+    currentResult /= enteredNumber;
+    mathOperator = '/';
+  }
+
+  const calculationDescription = `${initialResult} ${mathOperator} ${enteredNumber}`;
   outputResult(currentResult, calculationDescription); // from vendor file
-  writeToLog('ADD', initialResult, enteredNumber, currentResult);
+  writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
-function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-
-  const calculationDescription = `${initialResult} - ${enteredNumber}`;
-  currentResult -= enteredNumber;
-  outputResult(currentResult, calculationDescription);
-  writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
-}
-
-function multiply() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-
-  const calculationDescription = `${initialResult} * ${enteredNumber}`;
-  currentResult *= enteredNumber;
-  outputResult(currentResult, calculationDescription);
-  writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
-}
-
-function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-
-  const calculationDescription = `${initialResult} / ${enteredNumber}`;
-  currentResult /= enteredNumber;
-  outputResult(currentResult, calculationDescription);
-  writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
-}
-
-addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click', divide);
+addBtn.addEventListener('click', () => calculateResult('ADD'));
+subtractBtn.addEventListener('click', () => calculateResult('SUBTRACT'));
+multiplyBtn.addEventListener('click', () => calculateResult('MULTIPLY'));
+divideBtn.addEventListener('click', () => calculateResult('DIVIDE'));
