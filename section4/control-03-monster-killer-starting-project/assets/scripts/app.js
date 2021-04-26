@@ -157,12 +157,17 @@ function healPlayerHandler() {
   endRound();
 }
 
+let lastLoggedEntry;
 function printLogHandler() {
   let i = 0;
   for (const logEntry of battleLog) {
-    console.log(`#${i}`);
-    for (const key in logEntry) {
-      console.log(`${key.toUpperCase()}: ${logEntry[key]}`);
+    if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
+      console.log(`#${i}`);
+      for (const key in logEntry) {
+        console.log(`${key.toUpperCase()}: ${logEntry[key]}`);
+      }
+      lastLoggedEntry = i;
+      break;
     }
     i++;
   }
