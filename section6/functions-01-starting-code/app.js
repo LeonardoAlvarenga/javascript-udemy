@@ -58,12 +58,17 @@ startGameBtn.addEventListener('click', () => {
   gameIsRuning = true;
   console.log('Game is starting...');
   const playerChoice = getPlayerChoice();
-  console.log(playerChoice);
   const computerChoice = getRandomChoice();
-  console.log(computerChoice);
   const gameResult = getGameResult(playerChoice, computerChoice);
-  alert(
-    `- Player Choice: ${playerChoice} \n- Computer Choice: ${computerChoice}\n\n- RESULT: ${gameResult}`
-  );
+
+  let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore you `;
+  message =
+    gameResult === RESULT_DRAW
+      ? message + 'a DRAW.'
+      : gameResult === RESULT_PLAYER_WINS
+      ? message + 'WON!'
+      : message + 'LOST. :/';
+
+  alert(message);
   gameIsRuning = false;
 });
