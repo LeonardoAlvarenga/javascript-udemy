@@ -73,8 +73,8 @@
 //   gameIsRuning = false;
 // });
 
-const alertFinalValue = (result) => {
-  alert(`The operation result was: ${result}`);
+const alertFinalValue = (messageText, result) => {
+  alert(messageText + ' ' + result);
 };
 
 const sumFunction = (resultHandler, ...numbers) => {
@@ -93,6 +93,28 @@ const subFunction = (resultHandler, ...numbers) => {
   resultHandler(sub);
 };
 
-sumFunction(alertFinalValue, 1, 2, 3, 4, 5);
-sumFunction(alertFinalValue, 1, 1, 2, 5, 8, 13);
-subFunction(alertFinalValue, 1, 2, 3, 4, 5);
+sumFunction(
+  alertFinalValue.bind(this, 'O resultado da adição é:'),
+  1,
+  2,
+  3,
+  4,
+  5
+);
+sumFunction(
+  alertFinalValue.bind(this, 'O resultado da adição é:'),
+  1,
+  1,
+  2,
+  5,
+  8,
+  13
+);
+subFunction(
+  alertFinalValue.bind(this, 'O resultado da subtração é:'),
+  1,
+  2,
+  3,
+  4,
+  5
+);
