@@ -4,9 +4,9 @@ h1.textContent = 'Lelezinha e Benzquinha';
 const allLIs = document.querySelectorAll('li');
 
 const leleEBenArray = [
+  '23/04/2017',
   'Helena Pechy Alvarenga',
   'Benjamin Pechy Alvarenga',
-  '23/04/2017',
 ];
 
 i = 0;
